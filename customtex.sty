@@ -1,35 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{customtex}[2021/04/11 v0.1 Personal collection of LaTeX macros]
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%   PACKAGES   %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 % to patch commands
-\usepackage{etoolbox}
+\RequirePackage{etoolbox}
 
 % better typography
-\usepackage{microtype}
+\RequirePackage{microtype}
 
 % bibliography
-\usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex}
+\RequirePackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex}
 
 % better enumerates
-\usepackage{enumitem}
+\RequirePackage{enumitem}
 % quotation marks
-\usepackage{csquotes}
+\RequirePackage{csquotes}
 % better looking tables
-\usepackage{booktabs}
+\RequirePackage{booktabs}
 
 % math stuff
-\usepackage{mathtools}
+\RequirePackage{mathtools}
 % more arrows
-\usepackage{extarrows}
+\RequirePackage{extarrows}
 % theorem-like environments
-\usepackage{amsthm}
+\RequirePackage{amsthm}
 % commutative diagrams
-\usepackage{tikz-cd}
+\RequirePackage{tikz-cd}
 
 % allows to change the math font
 % also loads fontspec
-\usepackage[
+\RequirePackage[
 	% no space around equal sign!
 	warnings-off={mathtools-colon,mathtools-overbracket},
 	partial = upright
@@ -38,13 +41,8 @@
 % referencing and hyperlinking
 % load hyperref after everything else
 % except for cleveref
-\usepackage{hyperref}
-\usepackage[capitalise,noabbrev]{cleveref}
-
-
-
-\theoremstyle{definition}
-\newtheorem{proposition}{Proposition}
+\RequirePackage{hyperref}
+\RequirePackage[capitalise,noabbrev]{cleveref}
 
 
 
@@ -71,7 +69,7 @@
 \urlstyle{sf}
 
 % adjust arrows in tikz to font
-\usepackage{libertikz/libertikz}
+\RequirePackage{libertikz}
 
 
 
@@ -228,7 +226,7 @@
 % implicationslist; for lists of implications in proofs
 % never indented
 \newlist{implicationslist}{description}{2}
-\setlist[implicationlist]{
+\setlist[implicationslist]{
 	wide          = 0pt,
 	before        = {\renewcommand{\makelabel}{\dotlabel}},
 	listparindent = \parindent,
