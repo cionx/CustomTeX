@@ -12,7 +12,12 @@
 \RequirePackage{microtype}
 
 % bibliography
-\RequirePackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex}
+\RequirePackage[
+	backend    = biber,
+	style      = alphabetic,
+	dateabbrev = false,
+	urldate    = long
+]{biblatex}
 
 % better enumerates
 \RequirePackage{enumitem}
@@ -42,7 +47,10 @@
 % load hyperref after everything else
 % except for cleveref
 \RequirePackage{hyperref}
-\RequirePackage[capitalise,noabbrev]{cleveref}
+\RequirePackage[
+	capitalise,
+	noabbrev
+]{cleveref}
 
 
 
@@ -297,6 +305,12 @@
 \renewcommand{\theclaim}{\arabic{claim}}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%   TEXT FORMATTING   %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\newterm}{\textbf}
 
 
 
