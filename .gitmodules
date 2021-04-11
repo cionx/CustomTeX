@@ -1,0 +1,3 @@
+[submodule "libertikz"]
+	path = libertikz
+	url = https://gitlab.com/cionx/libertikz.git
