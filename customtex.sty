@@ -43,6 +43,9 @@
 	partial = upright
 ]{unicode-math}
 
+% detecting language
+\RequirePackage{iflang}
+
 % referencing and hyperlinking
 % load hyperref after everything else
 % except for cleveref
@@ -423,6 +426,7 @@
 %%%%% SPECIAL ELEMENTS %%%%%
 
 \newcommand{\Id}{\mathbb{1}}
+\newcommand{\ph}{\ensuremath{(\text{-})}}
 
 
 
@@ -454,6 +458,7 @@
 
 %%%%% DECORATIONS %%%%%
 
+\newcommand{\ab}{\mathrm{ab}}
 \newcommand{\conj}{\overline}
 \newcommand{\induced}{\overline}
 \newcommand{\op}{\mathrm{op}}
