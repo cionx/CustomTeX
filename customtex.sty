@@ -103,7 +103,7 @@
 
 % always insert pp. after pagetotal,
 % even if it isn’t recognized as a number by biblatex
-\DeclareFieldFormat[book]{pagetotal}{#1~\ppno}
+\DeclareFieldFormat[book,booklet]{pagetotal}{#1~\ppno}
 
 % no unplaned surprises with \cite
 \DeclareFieldFormat{postnote}{#1}
