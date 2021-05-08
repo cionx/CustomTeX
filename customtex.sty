@@ -213,7 +213,7 @@
 }
 \setlist[equivalenceslist,2]{
 	label = {\alph*.},
-	ref   = {\alph*}
+	ref   = {\theequivalenceslisti.\alph*}
 }
 
 % equivalenceslist*; an indented version of equivalenceslist
@@ -230,8 +230,8 @@
 	ref   = {\roman*}
 }
 \setlist[equivalenceslist*,2]{
-	label = {\alph*.},
- 	ref   = {\alph*}
+	label = {\roman*.},
+	ref   = {\roman*}
 }
 
 % implicationslist; for lists of implications in proofs
@@ -281,20 +281,20 @@
 
 \theoremstyle{definition}
 
-\newtheorem{construction}[everything]{\IfLanguageName{ngerman}{Konstruktion}{Construction}}
-\newtheorem{convention}  [everything]{\IfLanguageName{ngerman}{Konvention}{Convention}}
-\newtheorem{corollary}   [everything]{\IfLanguageName{ngerman}{Korollar}{Corollary}}
+\newtheorem{construction}[everything]{Construction}
+\newtheorem{convention}  [everything]{Convention}
+\newtheorem{corollary}   [everything]{Corollary}
 \newtheorem{definition}  [everything]{Definition}
-\newtheorem{example}     [everything]{\IfLanguageName{ngerman}{Beispiel}{Example}}
+\newtheorem{example}     [everything]{Example}
 \newtheorem{fluff}       [everything]{}
 \newtheorem{lemma}       [everything]{Lemma}
 \newtheorem{notation}    [everything]{Notation}
 \newtheorem{proposition} [everything]{Proposition}
-\newtheorem{question}    [everything]{\IfLanguageName{ngerman}{Question}{Frage}}
+\newtheorem{question}    [everything]{Question}
 \newtheorem{recall}      [everything]{Recall}
-\newtheorem{remark}      [everything]{\IfLanguageName{ngerman}{Bemerkung}{Remark}}
-\newtheorem{theorem}     [everything]{\IfLanguageName{ngerman}{Satz}{Theorem}}
-\newtheorem{warning}     [everything]{\IfLanguageName{ngerman}{Warnung}{Warning}}
+\newtheorem{remark}      [everything]{Remark}
+\newtheorem{theorem}     [everything]{Theorem}
+\newtheorem{warning}     [everything]{Warning}
 
 % the numbering for claims is local too the surrounding theorem-like environments;
 % to be used in proofs
