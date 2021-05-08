@@ -490,15 +490,15 @@
 {%
 	\IfBooleanTF{#1}
 	{%
-		\prerestrict*{#3}_{#4}^{5}
+		\prerestrict*{#3}_{#4}^{#5}
 	}
 	{%
 		\IfValueTF{#2}
 		{%
-			\prerestrict[#2]{#3}_{#4}^{5}
+			\prerestrict[#2]{#3}_{#4}^{#5}
 		}
 		{%
-			#3\rvert_{#4}^{5}
+			#3\rvert_{#4}^{#5}
 		}
 	}
 }
