@@ -1,5 +1,5 @@
-\NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{customtex}[2021/04/11 v0.1 Personal collection of LaTeX macros]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{customtex}[2021/05/11 Personal collection of LaTeX macros]
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%   PACKAGES   %%%%%
@@ -10,14 +10,6 @@
 
 % better typography
 \RequirePackage{microtype}
-
-% bibliography
-\RequirePackage[
-	backend    = biber,
-	style      = alphabetic,
-	dateabbrev = false,
-	urldate    = long
-]{biblatex}
 
 % better enumerates
 \RequirePackage{enumitem}
@@ -43,8 +35,17 @@
 	partial = upright
 ]{unicode-math}
 
-% detecting language
-\RequirePackage{iflang}
+\RequirePackage{polyglossia}
+\setdefaultlanguage{english}
+
+% bibliography
+% needs to be loaded after polyglossia
+\RequirePackage[
+	backend    = biber,
+	style      = alphabetic,
+	dateabbrev = false,
+	urldate    = long
+]{biblatex}
 
 % referencing and hyperlinking
 % load hyperref after everything else
@@ -282,22 +283,69 @@
 
 \theoremstyle{definition}
 
-\newtheorem{construction}[everything]{Construction}
-\newtheorem{convention}  [everything]{Convention}
-\newtheorem{corollary}   [everything]{Corollary}
-\newtheorem{definition}  [everything]{Definition}
-\newtheorem{example}     [everything]{Example}
+\newtheorem{construction}[everything]{\protect\constructionname}
+\newtheorem{convention}  [everything]{\protect\conventionname}
+\newtheorem{corollary}   [everything]{\protect\corollaryname}
+\newtheorem{definition}  [everything]{\protect\definitionname}
+\newtheorem{example}     [everything]{\protect\examplename}
 \newtheorem{fluff}       [everything]{}
-\newtheorem{lemma}       [everything]{Lemma}
-\newtheorem{notation}    [everything]{Notation}
-\newtheorem{proposition} [everything]{Proposition}
-\newtheorem{question}    [everything]{Question}
-\newtheorem{recall}      [everything]{Recall}
-\newtheorem{remark}      [everything]{Remark}
-\newtheorem{theorem}     [everything]{Theorem}
-\newtheorem{warning}     [everything]{Warning}
+\newtheorem{lemma}       [everything]{\protect\lemmaname}
+\newtheorem{notation}    [everything]{\procect\notationname}
+\newtheorem{proposition} [everything]{\protect\propositionname}
+\newtheorem{question}    [everything]{\protect\questionname}
+\newtheorem{recall}      [everything]{\protect\recallname}
+\newtheorem{remark}      [everything]{\protect\remarkname}
+\newtheorem{theorem}     [everything]{\protect\theoremname}
+\newtheorem{warning}     [everything]{\protect\warningname}
 
-% the numbering for claims is local too the surrounding theorem-like environments;
+% default names
+\newcommand{\constructionname}{Construction}
+\newcommand{\conventionname}{Convention}
+\newcommand{\corollaryname}{Corollary}
+\newcommand{\definitionname}{Definition}
+\newcommand{\examplename}{Example}
+\newcommand{\lemmaname}{Lemma}
+\newcommand{\notationname}{Notation}
+\newcommand{\propositionname}{Proposition}
+\newcommand{\questionname}{Question}
+\newcommand{\recallname}{Recall}
+\newcommand{\remarkname}{Remark}
+\newcommand{\theoremname}{Theorem}
+\newcommand{\warningname}{Warning}
+
+\gappto\polyglossia@language@switched {
+	\gappto\captionsgerman{
+		\renewcommand{\constructionname}{Konstruktion}
+		\renewcommand{\conventionname}{Konvention}
+		\renewcommand{\corollaryname}{Korollar}
+		\renewcommand{\definitionname}{Definition}
+		\renewcommand{\examplename}{Beispiel}
+		\renewcommand{\lemmaname}{Lemma}
+		\renewcommand{\notationname}{Notation}
+		\renewcommand{\propositionname}{Proposition}
+		\renewcommand{\questionname}{Frage}
+		\renewcommand{\recallname}{Wiederholung}
+		\renewcommand{\remarkname}{Bemerkung}
+		\renewcommand{\theoremname}{Satz}
+		\renewcommand{\warningname}{Warnung}
+		\crefname{construction}{Konstruktion}{Konstruktionen}
+		\crefname{convention}{Konvention}{Konventionen}
+		\crefname{corollary}{Korollar}{Korollare}
+		\crefname{definition}{Definition}{Definitionen}
+		\crefname{example}{Beispiel}{Beispiele}
+		\crefname{lemma}{Lemma}{Lemmata}
+		\crefname{notation}{Notation}{Notationen}
+		\crefname{proposition}{Proposition}{Propositionen}
+		\crefname{question}{Frage}{Fragen}
+		\crefname{recall}{Wiederholung}{Wiederholungen}
+		\crefname{remark}{Bemerkung}{Bemerkungen}
+		\crefname{theorem}{Satz}{Sätze}
+		\crefname{warning}{Warnung}{Warnungen}
+	}
+}
+
+
+% the numbering for claims is local to the surrounding theorem-like environments;
 % to be used in proofs
 \newtheorem{claim}{Claim} % unnumbered version
 % unnumbered version of claim
