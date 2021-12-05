@@ -61,6 +61,27 @@
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%   PACKAGE OPTIONS   %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Make things more fancy
+\newcommand{\mytheoremstyle}{definition}
+\newcommand{\fancysep}{12pt}
+\newcommand{\fancyifelse}[2]{#2}
+\xdefinecolor{fancycolor}{rgb}{0,0,0}
+\DeclareOption{fancy}{
+	\renewcommand{\mytheoremstyle}{fancy}
+	\renewcommand{\fancyifelse}[2]{#1}
+	\xdefinecolor{fancycolor}{rgb}{0.65,0.04,0.07}
+}
+
+\ProcessOptions\relax
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%   PACKAGE CONFIGURATION   %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,20 +142,38 @@
 %%%%%% LIST CONFIGURATION %%%%%
 
 % enumerate; default is unindented
-\setlist[enumerate]{
+\fancyifelse{
+	\setlist[enumerate, 1]{
+		font          = \color{fancycolor}\bfseries,
+		leftmargin    = 0pt,
+		labelsep      = \fancysep,
+		listparindent = \parindent,
+		parsep        = 0pt,
+		label         = {\arabic*\fancyifelse{}{.}},
+		ref           = {\arabic*}
+	}
+}{
+	\setlist[enumerate, 1]{
+		wide          = 0pt,
+		leftmargin    = *,
+		listparindent = \parindent,
+		parsep        = 0pt,
+		label         = {\arabic*\fancyifelse{}{.}},
+		ref           = {\arabic*}
+	}
+}
+
+\setlist[enumerate, 2]{
+	font          = \mdseries,
 	wide          = 0pt,
 	leftmargin    = *,
 	listparindent = \parindent,
-	parsep        = 0pt
+	parsep        = 0pt,
+	label         = {\alph*.},
+	ref           = {\alph*}
 }
-\setlist[enumerate, 1]{
-	label = {\arabic*.},
-	ref   = {\arabic*}
-}
-\setlist[enumerate, 2]{
-	label = {\alph*.},
-	ref   = {\alph*}
-}
+
+
 
 % itemize; default is unindented
 \setlist[itemize]{
@@ -145,6 +184,8 @@
 }
 \setlist[itemize, 1]{ label = {\textbullet} }
 \setlist[itemize, 2]{ label = {\textopenbullet} }
+
+
 
 % description; default is unindented
 \setlist[description, 1]{
@@ -160,6 +201,8 @@
 	parsep        = 0pt,
 	format        = {\normalfont\itshape\/\addperiod}
 }
+
+
 
 % enumerate*; an indented version of enumerate
 \newlist{enumerate*}{enumerate}{2}
@@ -179,6 +222,8 @@
  	ref   = {\alph*}
 }
 
+
+
 % itemize*; an indented version of itemize
 \newlist{itemize*}{itemize}{2}
 \setlist[itemize*]{
@@ -191,6 +236,8 @@
 \setlist[itemize*, 1]{  label = {\textbullet} }
 \setlist[itemize*, 2]{  label = {\textopenbullet} }
 
+
+
 % description*; an indented version of description
 \newlist{description*}{description}{2}
 \setlist[description*]{
@@ -199,6 +246,8 @@
 	listparindent = \parindent,
 	parsep        = 0pt
 }
+
+
 
 % equivalenceslist for stating equivalences;
 % unindented by default
@@ -281,7 +330,22 @@
 
 \newcounter{everything}[section]
 
-\theoremstyle{definition}
+\newtheoremstyle{fancy}
+  {\topsep}   % abovespace
+  {\topsep}   % belowspace
+  {\upshape}  % bodyfont
+  {0pt}       % indent (empty value is the same as 0pt)
+	{\color{fancycolor}\bfseries} % headfont
+  {}          % headpunct
+  {0pt} % headspace
+	{%
+		\thmnumber{\makebox[0pt][r]{\textcolor{fancycolor}{#2}\hspace{\fancysep}}}%
+		\thmname{#1}%
+		\thmnote{\color{black}\mdseries\ (#3)}%
+		\thmname{.\hspace{5pt plus 1pt minus 1pt}}%
+	} % CUSTOM-HEAD-SPEC
+
+\theoremstyle{\mytheoremstyle}
 
 \newtheorem{construction}[everything]{\protect\constructionname}
 \newtheorem{convention}  [everything]{\protect\conventionname}
@@ -299,6 +363,7 @@
 \newtheorem{warning}     [everything]{\protect\warningname}
 
 % default names
+\newcommand{\claimname}{Claim}
 \newcommand{\constructionname}{Construction}
 \newcommand{\conventionname}{Convention}
 \newcommand{\corollaryname}{Corollary}
@@ -315,6 +380,7 @@
 
 \gappto\polyglossia@language@switched {
 	\gappto\captionsgerman{
+		\renewcommand{\claimname}{Behauptung}
 		\renewcommand{\constructionname}{Konstruktion}
 		\renewcommand{\conventionname}{Konvention}
 		\renewcommand{\corollaryname}{Korollar}
@@ -347,9 +413,9 @@
 
 % the numbering for claims is local to the surrounding theorem-like environments;
 % to be used in proofs
-\newtheorem{claim}{Claim} % unnumbered version
+\newtheorem{claim}{\protect\claimname} % unnumbered version
 % unnumbered version of claim
-\newtheorem*{claim*}{Claim} % unnumbered version
+\newtheorem*{claim*}{\protect\claimname} % unnumbered version
 
 % printing of counters
 \renewcommand{\theeverything}{\thesection.\arabic{everything}}
@@ -515,6 +581,14 @@
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\trans}{\mathsf{t}}
 
+
+
+%%%%% QED SYMBOL %%%%%
+
+\fancyifelse{
+	\renewcommand{\qedsymbol}{♠}
+}{
+}
 
 
 
