@@ -611,21 +611,26 @@
 \DeclarePairedDelimiter{\prerestrict}{.}{\rvert} % period = empty delimiter
 \NewDocumentCommand%
 {\restrict}%
-{s o m m O{}}%
+{s o m m o}%
 {%
 	\IfBooleanTF{#1}
 	{%
-		\prerestrict*{#3}_{#4}^{#5}
+		\prerestrict*{#3}_{#4}%
 	}
 	{%
 		\IfValueTF{#2}
 		{%
-			\prerestrict[#2]{#3}_{#4}^{#5}
+			\prerestrict[#2]{#3}_{#4}%
 		}
 		{%
-			#3\rvert_{#4}^{#5}
+			#3\rvert_{#4}%
 		}
 	}
+	\IfValueTF{#5}
+	{%
+		^{#5}
+	}
+	{}
 }
 
 % \suchthat for inline
