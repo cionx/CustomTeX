@@ -94,11 +94,17 @@
 	Numbers     = OldStyle,
 	Contextuals = Alternate
 ]{Libertinus Serif}
+
 \setsansfont[
 	Numbers     = OldStyle,
 	Contextuals = Alternate
 ]{Libertinus Sans}
+
 \setmathfont{Libertinus Math}
+
+% Libertinus Math uses a mathscr-font for both mathcal and mathscr.
+% Therefore \matcal is taken from STIX Two, which is distributed via TeXlive.
+\setmathfont[range={cal}, Scale={MatchUppercase}]{STIXTwoMath-Regular.otf}
 
 % sanf serif for hyperlinks
 \urlstyle{sf}
