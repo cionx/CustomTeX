@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{customtex}[2022/01/23 Personal collection of LaTeX macros]
+\ProvidesPackage{customtex}[2022/02/08 Personal collection of LaTeX macros]
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%   PACKAGES   %%%%%
@@ -593,6 +593,10 @@
 \fancyifelse{
 	\renewcommand{\qedsymbol}{♠}
 }{
+	% change qed symbol
+	% to use the one provided by the font
+	% i.e. Unicode symbol U+220E
+	\renewcommand{\qedsymbol}{\ensuremath{∎}}
 }
 
 
