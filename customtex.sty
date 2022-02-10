@@ -1,5 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{customtex}[2022/02/08 Personal collection of LaTeX macros]
+\ProvidesPackage{customtex}[2022/02/11 Personal collection of LaTeX macros]
+
+% Temporary disable some warnings due to changes in the LateX kernel.
+\ExplSyntaxOn
+	\msg_redirect_name:nnn { hooks } { generic-deprecated } { none }
+\ExplSyntaxOff
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%   PACKAGES   %%%%%
