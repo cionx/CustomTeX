@@ -1,5 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{customtex}[2022/01/15 Personal collection of LaTeX macros]
+\ProvidesPackage{customtex}[2022/02/11 Personal collection of LaTeX macros]
+
+% Temporary disable some warnings due to changes in the LateX kernel.
+\ExplSyntaxOn
+	\msg_redirect_name:nnn { hooks } { generic-deprecated } { none }
+\ExplSyntaxOff
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%   PACKAGES   %%%%%
@@ -30,11 +36,15 @@
 % allows to change the math font
 % also loads fontspec
 \RequirePackage[
-	% no space around equal sign!
+	% no space around the following equal sign!
 	warnings-off={mathtools-colon,mathtools-overbracket},
 	partial = upright
 ]{unicode-math}
 
+% use Euler script for \matcal
+\RequirePackage{eucal}
+
+% language support
 \RequirePackage{polyglossia}
 \setdefaultlanguage{english}
 
@@ -94,11 +104,19 @@
 	Numbers     = OldStyle,
 	Contextuals = Alternate
 ]{Libertinus Serif}
+
 \setsansfont[
 	Numbers     = OldStyle,
 	Contextuals = Alternate
 ]{Libertinus Sans}
+
 \setmathfont{Libertinus Math}
+
+% Libertinus Math uses a mathscr-font for both mathcal and mathscr.
+% Therefore \mathcal uses Euler script.
+% This is automatically done via the package "eucal".
+% I’d prefer to use the OpenType font "Neo Euler" instead, but it is not distributed via TeXlive.
+% \setmathfont[range={cal}, Scale={MatchUppercase}]{Neo Euler}
 
 % sanf serif for hyperlinks
 \urlstyle{sf}
@@ -174,8 +192,6 @@
 	ref           = {\alph*}
 }
 
-
-
 % itemize; default is unindented
 \setlist[itemize]{
 	wide          = 0pt,
@@ -185,8 +201,6 @@
 }
 \setlist[itemize, 1]{ label = {\textbullet} }
 \setlist[itemize, 2]{ label = {\textopenbullet} }
-
-
 
 % description; default is unindented
 \setlist[description, 1]{
@@ -202,8 +216,6 @@
 	parsep        = 0pt,
 	format        = {\normalfont\itshape\/\addperiod}
 }
-
-
 
 % enumerate*; an indented version of enumerate
 \newlist{enumerate*}{enumerate}{2}
@@ -223,8 +235,6 @@
  	ref   = {\alph*}
 }
 
-
-
 % itemize*; an indented version of itemize
 \newlist{itemize*}{itemize}{2}
 \setlist[itemize*]{
@@ -237,8 +247,6 @@
 \setlist[itemize*, 1]{  label = {\textbullet} }
 \setlist[itemize*, 2]{  label = {\textopenbullet} }
 
-
-
 % description*; an indented version of description
 \newlist{description*}{description}{2}
 \setlist[description*]{
@@ -247,8 +255,6 @@
 	listparindent = \parindent,
 	parsep        = 0pt
 }
-
-
 
 % equivalenceslist for stating equivalences;
 % unindented by default
@@ -542,7 +548,13 @@
 
 %%%%% SPECIAL ELEMENTS %%%%%
 
+\newcommand{\eul}{\mathrm{e}}
 \newcommand{\Id}{\mathbb{1}}
+\newcommand{\img}{\mathrm{i}}
+\AtBeginDocument {
+	\renewcommand{\pi}{\mathrm{π}}
+}
+
 \newcommand{\ph}{\mathrm{-}}
 \newcommand{\phdot}{\,\cdot\,}
 
@@ -590,11 +602,22 @@
 \fancyifelse{
 	\renewcommand{\qedsymbol}{♠}
 }{
+	% change qed symbol
+	% to use the one provided by the font
+	% i.e. Unicode symbol U+220E
+	\renewcommand{\qedsymbol}{\ensuremath{∎}}
 }
 
 
 
 %%%%% MISC %%%%%
+
+% column vectors
+\newcommand{\vect}[1]{
+	\begin{pmatrix}
+		#1
+	\end{pmatrix}
+}
 
 % iddots
 \newcommand{\iddots}{⋰}
