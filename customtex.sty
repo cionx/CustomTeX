@@ -312,25 +312,33 @@
 
 % casedistinction; list for case distinctions
 % never indented
+\newcommand{\casename}{Case}
 \newlist{casedistinction}{enumerate}{2}
 \setlist[casedistinction, 1]{
 	wide          = 0pt,
 	leftmargin    = *,
 	listparindent = \parindent,
 	parsep        = 0pt,
-	label         = {\bfseries Case~\arabic*.},
+	label         = {\bfseries \casename{}~\arabic*.},
 	ref           = {\arabic*}
 }
 \setlist[casedistinction, 2]{
 	wide          = 0pt,
 	ref           = {\arabic*},
-	label         = {\bfseries Case~\arabic{casedistinctioni}.\alph*.},
+	label         = {\bfseries \casename{}~\arabic{casedistinctioni}.\alph*.},
 	ref           = {\arabic*}
 }
 
 \crefname{casedistinctioni}{Case}{Cases}
 \Crefname{casedistinctioni}{Case}{Cases}
 
+\gappto\polyglossia@language@switched {
+	\gappto\captionsgerman{
+		\renewcommand{\casename}{Fall}
+		\crefname{casedistinctioni}{Fall}{Fälle}
+		\Crefname{casedistinctioni}{Fall}{Fälle}
+	}
+}
 
 
 %%%%% THEOREM-LIKE ENVIRONMENTS CONFIGURATION %%%%%
