@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{customtex}[2022/02/11 Personal collection of LaTeX macros]
+\ProvidesPackage{customtex}[2022/03/06 Personal collection of LaTeX macros]
 
 % Temporary disable some warnings due to changes in the LateX kernel.
 \ExplSyntaxOn
@@ -312,25 +312,33 @@
 
 % casedistinction; list for case distinctions
 % never indented
+\newcommand{\casename}{Case}
 \newlist{casedistinction}{enumerate}{2}
 \setlist[casedistinction, 1]{
 	wide          = 0pt,
 	leftmargin    = *,
 	listparindent = \parindent,
 	parsep        = 0pt,
-	label         = {\bfseries Case~\arabic*.},
+	label         = {\bfseries \casename{}~\arabic*.},
 	ref           = {\arabic*}
 }
 \setlist[casedistinction, 2]{
 	wide          = 0pt,
 	ref           = {\arabic*},
-	label         = {\bfseries Case~\arabic{casedistinctioni}.\alph*.},
+	label         = {\bfseries \casename{}~\arabic{casedistinctioni}.\alph*.},
 	ref           = {\arabic*}
 }
 
 \crefname{casedistinctioni}{Case}{Cases}
 \Crefname{casedistinctioni}{Case}{Cases}
 
+\gappto\polyglossia@language@switched {
+	\gappto\captionsgerman{
+		\renewcommand{\casename}{Fall}
+		\crefname{casedistinctioni}{Fall}{Fälle}
+		\Crefname{casedistinctioni}{Fall}{Fälle}
+	}
+}
 
 
 %%%%% THEOREM-LIKE ENVIRONMENTS CONFIGURATION %%%%%
@@ -487,6 +495,13 @@
 		{\oldmapsfrom}
 	}
 }
+\renewcommand{\leadsto}{
+	\mathchoice
+	{\longrightsquigarrow}
+	{\rightsquigarrow}
+	{\rightsquigarrow}
+	{\rightsquigarrow}
+}
 \newcommand{\onetoone}{
 	\mathchoice
 	{\longleftrightarrow}
@@ -536,6 +551,7 @@
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Map}{Map}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\Symm}{S}
