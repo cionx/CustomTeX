@@ -36,9 +36,18 @@
 % allows to change the math font
 % also loads fontspec
 \RequirePackage[
-	% no space around the following equal sign!
+	% careful: there must be no space around the following equal sign!
 	warnings-off={mathtools-colon,mathtools-overbracket},
-	partial = upright
+	% use upright ∂
+	partial = upright,
+	% the default math text styles should be taken from the math font,
+	% and not from the text font (unicode-math defaults to the text font,
+	% see section 4.4.2 in the manual)
+	mathrm = sym,
+	mathbf = sym,
+	mathit = sym,
+	mathsf = sym,
+	mathtt = sym
 ]{unicode-math}
 
 % use Euler script for \matcal
@@ -123,6 +132,7 @@
 
 % adjust arrows in tikz to font
 \RequirePackage{libertikz}
+
 
 
 
@@ -376,6 +386,8 @@
 \newtheorem{remark}      [everything]{\protect\remarkname}
 \newtheorem{theorem}     [everything]{\protect\theoremname}
 \newtheorem{warning}     [everything]{\protect\warningname}
+
+\newtheorem*{proposition*}{\protect\propositionname}
 
 % default names
 \newcommand{\claimname}{Claim}
