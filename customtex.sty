@@ -79,12 +79,12 @@
 \newcommand{\mytheoremstyle}{definition}
 \newcommand{\fancysep}{12pt}
 \newcommand{\fancyifelse}[2]{#2}
-\xdefinecolor{fancycolor}{rgb}{0,0,0}
+\xdefinecolor{fancyred}{rgb}{0,0,0}
 \DeclareOption{fancy}{
 	\renewcommand{\mytheoremstyle}{fancy}
 	\renewcommand{\fancyifelse}[2]{#1}
-	\xdefinecolor{fancycolor}{rgb}{0.65,0.04,0.07}
 }
+\xdefinecolor{fancyred}{rgb}{0.65,0.04,0.07}
 
 \ProcessOptions\relax
 
@@ -163,7 +163,7 @@
 % enumerate; default is unindented
 \fancyifelse{
 	\setlist[enumerate, 1]{
-		font          = \color{fancycolor}\bfseries,
+		font          = \color{fancyred}\bfseries,
 		leftmargin    = 0pt,
 		labelsep      = \fancysep,
 		listparindent = \parindent,
@@ -350,11 +350,11 @@
   {\topsep}   % belowspace
   {\upshape}  % bodyfont
   {0pt}       % indent (empty value is the same as 0pt)
-	{\color{fancycolor}\bfseries} % headfont
+	{\color{fancyred}\bfseries} % headfont
   {}          % headpunct
   {0pt} % headspace
 	{%
-		\thmnumber{\makebox[0pt][r]{\textcolor{fancycolor}{#2}\hspace{\fancysep}}}%
+		\thmnumber{\makebox[0pt][r]{\textcolor{fancyred}{#2}\hspace{\fancysep}}}%
 		\thmname{#1}%
 		\thmnote{\color{black}\mdseries\ (#3)}%
 		\thmname{.\hspace{5pt plus 1pt minus 1pt}}%
