@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{customtex}[2022/04/08 Personal collection of LaTeX macros]
+\ProvidesPackage{customtex}[2023/01/07 Personal collection of LaTeX macros]
 
 % Temporary disable some warnings due to changes in the LateX kernel.
 \ExplSyntaxOn
@@ -466,6 +466,12 @@
 
 %%%%% ARROWS %%%%%
 
+% Libertinus is currently missing a glyph for \longleftsquigarrow, see https://github.com/alerque/libertinus/issues/525.
+% Therefore, a mirrored version of \longrightsquigarrow is used instead.
+\AtBeginDocument{
+	\renewcommand{\longleftsquigarrow}{\reflectbox{$\longrightsquigarrow$}}
+}
+
 \renewcommand{\to}{
 	\mathchoice
 	{\longrightarrow}
@@ -514,6 +520,13 @@
 	{\rightsquigarrow}
 	{\rightsquigarrow}
 }
+\newcommand{\leadsfrom}{
+	\mathchoice
+	{\longleftsquigarrow}
+	{\leftsquigarrow}
+	{\leftsquigarrow}
+	{\leftsquigarrow}
+}
 \newcommand{\onetoone}{
 	\mathchoice
 	{\longleftrightarrow}
@@ -536,7 +549,7 @@
 	{\xleftarrow{#1}}
 }
 
-\newcommand{\longleadsto}{\longrightsquigarrow}
+
 
 
 %%%%% NUMBERS AND FIELDS %%%%%
