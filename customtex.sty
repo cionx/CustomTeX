@@ -691,7 +691,12 @@
 
 % larger bullet
 \let\oldbullet\bullet
-\renewcommand{\bullet}{{\scalebox{1.15}{\oldbullet}}}
+\renewcommand{\bullet}{{\scalebox{1.2}{\oldbullet}}}
+\newcommand{\bigbullet}{%
+	\raisebox{-0.15em}{%
+		{\scalebox{1.7}{\oldbullet}}%
+	}
+}
 
 % restrict{f}{X} for f|_X
 % restrict[Y]{f}{X} for f|^Y_X
